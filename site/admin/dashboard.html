@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>داشبورد ادمین</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234338ca'/%3E%3Cpath d='M16 6l3.09 6.26L26 13.27l-5 4.87 1.18 6.88L16 19.77l-6.18 3.25L11 16.14 6 11.27l6.91-1.01L16 6z' fill='white'/%3E%3C/svg%3E"/>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../premium.css">
+  </head>
+<body class="dark">
+<header class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <span class="logo-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span>داشبورد ادمین</span>
+      </a>
+      <nav class="navbar-menu">
+        <a href="../index.html" class="nav-link">خانه</a>
+        <a href="../admin/dashboard.html" class="nav-link active">داشبورد</a>
+        <a href="../products/products.html" class="nav-link">محصولات</a>
+        <button id="logoutBtn" type="button" class="logout-btn">خروج</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="dashboard-grid">
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> مدیریت کاربران</h2>
+        <div id="usersList" class="orders-list"></div>
+        <p id="noUsers" class="empty-msg" style="display:none;">کاربری ثبت نشده است.</p>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> نظرات و پیام‌ها</h2>
+        <div id="commentsList" class="orders-list"></div>
+        <p id="noComments" class="empty-msg" style="display:none;">نظری وجود ندارد.</p>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg> تیکت‌های پشتیبانی</h2>
+        <div id="ticketsList" class="orders-list"></div>
+        <p id="noTickets" class="empty-msg" style="display:none;">تیکتی وجود ندارد.</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="../data.js"></script>
+
+  <script src="dashboard.js"></script>
+  <script src="../animations.js"></script>
+</body>
+</html>
+
+
+

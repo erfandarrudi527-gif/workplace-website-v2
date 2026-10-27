@@ -1,0 +1,886 @@
+/* ============================================
+   GLOBAL ANIMATION SYSTEM
+   - Floating content on homepage sections
+   - Plain text (no gradient) for main headings
+   ============================================ */
+
+/* ===== Keyframes ===== */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes floatYsm {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes floatYlg {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(1deg); }
+    66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+@keyframes floatX {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+}
+
+@keyframes orbDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.1); }
+    66% { transform: translate(-30px, 25px) scale(0.95); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px var(--primary-glow, rgba(67, 56, 202,0.3)); }
+    50% { box-shadow: 0 0 35px var(--primary-glow, rgba(67, 56, 202,0.3)), 0 0 60px rgba(79, 70, 229,0.2); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes ripple {
+    to { transform: scale(4); opacity: 0; }
+}
+
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes softPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3) translateY(30px); }
+    50% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+    70% { transform: scale(0.98) translateY(2px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ===== Float helpers ===== */
+.float { animation: floatY 4s ease-in-out infinite; }
+.float-sm { animation: floatYsm 3s ease-in-out infinite; }
+.float-lg { animation: floatYlg 5s ease-in-out infinite; }
+.float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.float-x { animation: floatX 5s ease-in-out infinite; }
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+
+/* ===== Background Orbs (page-wide animated blobs) ===== */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.bg-orbs .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    will-change: transform;
+}
+.bg-orbs .orb-1 {
+    width: 420px; height: 420px;
+    top: -120px; right: -100px;
+    background: radial-gradient(circle, #4f46e5, transparent 70%);
+    animation: orbDrift 18s ease-in-out infinite;
+}
+.bg-orbs .orb-2 {
+    width: 360px; height: 360px;
+    bottom: -120px; left: -80px;
+    background: radial-gradient(circle, #3730a3, transparent 70%);
+    animation: orbDrift 22s ease-in-out infinite reverse;
+}
+.bg-orbs .orb-3 {
+    width: 300px; height: 300px;
+    top: 40%; left: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.55), transparent 70%);
+    animation: orbDrift 26s ease-in-out infinite;
+}
+.bg-orbs .orb-4 {
+    width: 280px; height: 280px;
+    top: 70%; right: 10%;
+    background: radial-gradient(circle, #4f46e5, transparent 70%);
+    animation: orbDrift 24s ease-in-out infinite reverse;
+}
+body.dark .bg-orbs .orb-1 { background: radial-gradient(circle, #6366f1, transparent 70%); }
+body.dark .bg-orbs .orb-2 { background: radial-gradient(circle, #3730a3, transparent 70%); }
+body.dark .bg-orbs .orb-3 { background: radial-gradient(circle, #a5b4fc, transparent 70%); }
+body.dark .bg-orbs .orb-4 { background: radial-gradient(circle, #312e81, transparent 70%); }
+body.dark .bg-orbs .orb { opacity: 0.35; }
+
+/* ===== Animated gradient background on body ===== */
+body.animated-bg {
+    background: linear-gradient(to bottom, #101827 0%, #141d33 55%, #16203a 100%);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+body.dark.animated-bg {
+    background: linear-gradient(to bottom, #0f1626 0%, #0b1020 55%, #111a2e 100%);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+/* ===== Reveal on scroll ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-scale.is-visible { opacity: 1; transform: scale(1); }
+
+/* ===== Section entrance ===== */
+.section-anim {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+}
+.section-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ===== Stagger grids ===== */
+.stagger-grid > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.stagger-grid.is-visible > * { opacity: 1; transform: translateY(0); }
+.stagger-grid.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-grid.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-grid.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-grid.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-grid.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-grid.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+.stagger-grid.is-visible > *:nth-child(7) { transition-delay: 480ms; }
+.stagger-grid.is-visible > *:nth-child(8) { transition-delay: 560ms; }
+.stagger-grid.is-visible > *:nth-child(9) { transition-delay: 640ms; }
+
+/* ===== Ripple click ===== */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(24, 32, 58, 0.5);
+    transform: scale(0);
+    animation: ripple 0.7s linear;
+    pointer-events: none;
+}
+
+/* ===== Hover lift ===== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+/* ===== Tilt card (mouse 3D) ===== */
+.tilt-card { transition: transform 0.15s ease; transform-style: preserve-3d; }
+.tilt-card:hover { transform: translateY(-4px); }
+
+/* ===== Glow ring ===== */
+.glow-ring { position: relative; }
+.glow-ring::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    border-top-color: rgba(255,255,255,0.6);
+    border-right-color: rgba(79, 70, 229,0.4);
+    animation: rotateGlow 5s linear infinite;
+    pointer-events: none;
+}
+
+/* ===== Pulse glow ===== */
+.pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+/* ===== Spinning icon ===== */
+.spin-slow { animation: spinSlow 8s linear infinite; }
+
+/* ===== Soft pulse ===== */
+.soft-pulse { animation: softPulse 2s ease-in-out infinite; }
+
+/* ===== Bounce in ===== */
+.bounce-in { animation: bounceIn 0.8s ease forwards; }
+
+/* ===== Plain heading (no gradient background) ===== */
+.plain-heading {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: var(--text) !important;
+}
+.plain-heading-light {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: #fff !important;
+}
+
+/* Override text-rainbow on h1/h2 to plain text */
+h1.no-gradient,
+h2.no-gradient {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: inherit !important;
+}
+
+/* Plain heading on dark/colored background (dark text for readability) */
+.plain-heading-dark {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: #312e81 !important;
+    text-shadow: none;
+}
+
+body.dark .plain-heading-dark {
+    color: #6366f1 !important;
+}
+
+.hero-card h1 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: none;
+}
+
+/* ===== Cursor follower ===== */
+.cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #4338ca, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+    mix-blend-mode: plus-lighter;
+}
+.cursor-dot.is-active { opacity: 0.8; }
+.cursor-dot.is-hover { width: 36px; height: 36px; }
+
+/* ===== Shimmer line under headings ===== */
+.shimmer-line {
+    position: relative;
+    height: 3px;
+    width: 180px;
+    margin: 14px auto 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary, #4338ca), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+    opacity: 0.7;
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    .cursor-dot { display: none; }
+}
+
+/* ============================================================
+   ARTWORK + MOTION (اضافه‌شده)
+   تصاویر SVG سایت، کارت‌های محصول، کاور وبلاگ و انیمیشن‌های تازه
+   ============================================================ */
+
+/* [hidden] باید همیشه برنده باشد، حتی روی عناصری که display دارند */
+[hidden] { display: none !important; }
+
+/* کلاس .hidden هم همین کار را می‌کند؛ نشانگر سبد، خلاصهٔ سبد و
+   پنل‌ها از آن استفاده می‌کنند و قبلاً فقط در چند فایل CSS بود. */
+.hidden { display: none !important; }
+
+/* ===== دکمهٔ سبد خرید و نشانگر تعداد =====
+   این دو در همهٔ صفحات هدر استفاده می‌شوند، اما استایلشان فقط
+   داخل فایل‌های داشبورد بود و در بقیهٔ صفحات بی‌شکل می‌ماند. */
+
+.cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    background: rgba(24, 32, 58, 0.55);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.cart-btn:hover {
+    transform: scale(1.04);
+    border-color: rgba(99, 102, 241, 0.7);
+    background: rgba(79, 70, 229, 0.22);
+}
+
+.cart-badge {
+    position: absolute;
+    top: 2px;
+    inset-inline-start: 2px;
+    min-width: 20px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+/* ===== فوتر =====
+   صفحهٔ محصولات هم فوتر دارد ولی فقط style.css آن را تعریف می‌کرد
+   و آن فایل در صفحهٔ محصولات لود نمی‌شود. */
+
+.site-footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+    padding: 26px 20px 34px;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    background: rgba(250, 251, 254, 0.6);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-brand {
+    font-weight: 700;
+    color: #6366f1;
+}
+
+.footer-note {
+    color: #9fb0d6;
+    font-size: 0.9rem;
+}
+
+/* ===== تصاویر محصول ===== */
+
+.mini-img,
+.product-img,
+.amazing-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1), filter 0.4s ease;
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.45));
+}
+
+.mini-thumb,
+.product-thumb,
+.amazing-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.mini-product:hover .mini-img,
+.product-card:hover .product-img,
+.amazing-card:hover .amazing-img {
+    transform: scale(1.07) translateY(-4px);
+}
+
+.mini-emoji,
+.product-emoji,
+.amazing-emoji {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+/* درخشش نرم پشت تصویر محصول */
+.product-thumb::after,
+.mini-thumb::after,
+.amazing-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(79, 70, 229, 0.22), transparent 62%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.product-card:hover .product-thumb::after,
+.mini-product:hover .mini-thumb::after,
+.amazing-card:hover .amazing-thumb::after { opacity: 1; }
+
+/* ===== تصویر دسته‌بندی‌ها ===== */
+
+.cc-img {
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(24, 32, 58, 0.7);
+    border: 1px solid rgba(99, 102, 241, 0.28);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.cat-circle:hover .cc-img {
+    border-color: rgba(45, 212, 191, 0.6);
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.35);
+    transform: translateY(-3px) rotate(-3deg);
+}
+
+/* ===== تصویر بنر اصلی ===== */
+
+.banner-art img {
+    width: clamp(220px, 32vw, 380px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5));
+    animation: artFloat 7s ease-in-out infinite;
+}
+
+@keyframes artFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(-1.5deg); }
+}
+
+/* ===== کارت محصول (صفحه فروشگاه) ===== */
+
+.product-img { padding: 6px; }
+
+.product-cat {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #2dd4bf;
+    background: rgba(45, 212, 191, 0.12);
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 10px;
+    inset-inline-start: 10px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    background: rgba(24, 32, 58, 0.7);
+    color: #a5b4fc;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.product-card:hover .wishlist-icon,
+.wishlist-icon.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wishlist-icon:hover { background: rgba(79, 70, 229, 0.28); }
+.wishlist-icon.active { color: #4f46e5; border-color: rgba(79, 70, 229, 0.7); }
+.wishlist-icon.active svg { animation: heartPop 0.45s cubic-bezier(.2,.9,.3,1.4); }
+
+@keyframes heartPop {
+    0% { transform: scale(0.6); }
+    55% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+/* ===== کاور وبلاگ ===== */
+
+.blog-cover {
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    aspect-ratio: 12 / 7;
+    background: rgba(24, 32, 58, 0.6);
+}
+
+.blog-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+
+.blog-card:hover .blog-cover img { transform: scale(1.06); }
+
+.post-cover {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+    margin-bottom: 18px;
+}
+
+.no-posts,
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted, #9fb0d6);
+    padding: 40px 0;
+}
+
+/* ===== سبد خرید ===== */
+
+.item-thumb {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(24, 32, 58, 0.55);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.item-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.item-emoji { font-size: 1.8rem; }
+
+.item-line-total {
+    font-weight: 700;
+    color: #2dd4bf;
+    white-space: nowrap;
+}
+
+/* ===== داشبورد ===== */
+
+.order-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wish-img,
+.order-thumb {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(24, 32, 58, 0.55);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 4px;
+}
+
+.wish-head { display: flex; align-items: center; font-size: 1.6rem; }
+
+.wish-actions,
+.upload-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.remove-wish {
+    padding: 6px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.14);
+    color: #f87171;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.25s ease;
+}
+
+.remove-wish:hover { background: rgba(239, 68, 68, 0.28); }
+
+/* ===== پیام کوتاه (توست) ===== */
+
+.app-toast {
+    position: fixed;
+    bottom: 28px;
+    inset-inline-start: 50%;
+    transform: translate(-50%, 24px);
+    padding: 13px 26px;
+    border-radius: 14px;
+    background: rgba(24, 32, 58, 0.94);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #eef2ff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    max-width: min(90vw, 520px);
+    text-align: center;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.8,.3,1.2);
+}
+
+.app-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.app-toast.error { border-color: rgba(239, 68, 68, 0.6); color: #fecaca; }
+.app-toast.success { border-color: rgba(45, 212, 191, 0.5); }
+
+/* ===== انیمیشن‌های تازه ===== */
+
+/* درخشش عبوری روی دکمه‌های اصلی */
+.shine-btn { position: relative; overflow: hidden; }
+
+.shine-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(24, 32, 58, 0.45), transparent);
+    transform: skewX(-18deg);
+    animation: shineSweep 3.6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shineSweep {
+    0%, 55% { inset-inline-start: -120%; }
+    85%, 100% { inset-inline-start: 160%; }
+}
+
+/* نبض روی نشان تخفیف */
+.off-pill,
+.amazing-off-pill {
+    animation: pillPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pillPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.55); }
+    55% { box-shadow: 0 0 0 9px rgba(79, 70, 229, 0); }
+}
+
+/* حرکت بی‌پایان نوار برندها */
+.brands-track { animation: marqueeSlide 26s linear infinite; }
+
+@keyframes marqueeSlide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.brands-marquee:hover .brands-track { animation-play-state: paused; }
+
+/* ورود پله‌ای کارت‌های محصول */
+.product-card,
+.mini-product,
+.amazing-card {
+    animation: cardRise 0.6s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.product-card:nth-child(2n) { animation-delay: 60ms; }
+.product-card:nth-child(3n) { animation-delay: 120ms; }
+.product-card:nth-child(4n) { animation-delay: 180ms; }
+
+@keyframes cardRise {
+    from { opacity: 0; transform: translateY(22px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* تکان ملایم نشانگر سبد خرید هنگام افزودن */
+@keyframes cartBump {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35) rotate(-8deg); }
+    100% { transform: scale(1); }
+}
+
+.cart-badge.bump { animation: cartBump 0.5s cubic-bezier(.2,.9,.3,1.4); }
+
+/* زیرخط متحرک روی لینک‌های منو */
+.nav-link { position: relative; }
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    inset-inline: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #2dd4bf, #4f46e5);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+
+/* ===== کاهش حرکت ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-art img,
+    .brands-track,
+    .shine-btn::after,
+    .off-pill,
+    .amazing-off-pill,
+    .product-card,
+    .mini-product,
+    .amazing-card {
+        animation: none !important;
+    }
+
+    /* عناصری که با opacity:0 شروع می‌شوند باید بدون انیمیشن دیده شوند،
+       وگرنه در حالت «کاهش حرکت» صفحه خالی به نظر می‌رسد. */
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale,
+    .reveal-center,
+    .section-anim,
+    .stagger-grid,
+    .stagger-grid > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ===== دکمه افزودن به سبد روی کارت‌های صفحه اصلی ===== */
+.mini-add-btn {
+    margin-top: 4px;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.mini-add-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+}
+
+.mini-add-btn:active { transform: scale(0.96); }
+
+.mini-add-btn.added {
+    background: linear-gradient(135deg, #10b981, #047857);
+}
+
+/* لینک داخلی کارت شگفت‌انگیز (تصویر، نام و قیمت) */
+.amazing-link {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}

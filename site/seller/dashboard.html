@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>داشبورد فروشنده</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234338ca'/%3E%3Cpath d='M16 6l3.09 6.26L26 13.27l-5 4.87 1.18 6.88L16 19.77l-6.18 3.25L11 16.14 6 11.27l6.91-1.01L16 6z' fill='white'/%3E%3C/svg%3E"/>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../premium.css">
+  </head>
+<body class="dark">
+<header class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <span class="logo-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span>داشبورد فروشنده</span>
+      </a>
+      <nav class="navbar-menu">
+        <a href="../index.html" class="nav-link">خانه</a>
+        <a href="../seller/dashboard.html" class="nav-link active">داشبورد</a>
+        <a href="../products/products.html" class="nav-link">محصولات</a>
+        <button id="logoutBtn" type="button" class="logout-btn">خروج</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="dashboard-grid">
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> آمار فروش</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-value">۱۲</span>
+            <span class="stat-label">محصول فعال</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">۳۴</span>
+            <span class="stat-label">سفارش</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">۴.۸</span>
+            <span class="stat-label">امتیاز</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> مدیریت محصولات</h2>
+        <p id="sellerApprovalMsg" class="empty-msg" style="display:none;">حساب شما هنوز تایید نشده است.</p>
+        <div id="sellerProducts" class="orders-list"></div>
+        <p id="noSellerProducts" class="empty-msg">محصولی ثبت نشده است.</p>
+        <form id="addProductForm" class="add-form">
+          <input type="text" id="productTitle" placeholder="نام محصول" required />
+          <input type="text" id="productPrice" placeholder="قیمت (تومان)" required />
+          <input type="text" id="productDiscount" placeholder="درصد تخفیف (اختیاری — مثلاً ۱۵)" inputmode="numeric" />
+          <input type="text" id="productCategory" placeholder="دسته‌بندی" />
+          <input type="file" id="productImage" accept="image/*" />
+          <textarea id="productDesc" placeholder="توضیحات محصول..." rows="3"></textarea>
+          <button type="submit" class="hero-btn primary">افزودن محصول</button>
+        </form>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> مدیریت بلاگ</h2>
+        <div id="sellerBlogs" class="orders-list"></div>
+        <p id="noSellerBlogs" class="empty-msg">بلاگی ثبت نشده است.</p>
+        <form id="addBlogForm" class="add-form">
+          <input type="text" id="blogTitle" placeholder="عنوان بلاگ" required />
+          <input type="text" id="blogExcerpt" placeholder="خلاصه کوتاه" required />
+          <input type="file" id="blogImage" accept="image/*" />
+          <textarea id="blogContent" placeholder="متن کامل بلاگ..." rows="4" required></textarea>
+          <button type="submit" class="hero-btn primary">افزودن بلاگ</button>
+        </form>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> آپلود مدارک</h2>
+        <p class="section-subtitle">فایل‌های مربوط به احراز هویت یا محصول خود را آپلود کنید.</p>
+        <form id="uploadForm" class="add-form">
+          <input type="file" id="uploadFile" placeholder="انتخاب فایل" required />
+          <button type="submit" class="hero-btn primary">آپلود فایل</button>
+        </form>
+        <div id="sellerUploads" class="orders-list"></div>
+        <p id="noSellerUploads" class="empty-msg">هنوز فایلی آپلود نشده است.</p>
+      </section>
+
+      <section class="dashboard-card">
+        <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> سفارش‌های اخیر</h2>
+        <div id="sellerOrders" class="orders-list"></div>
+        <p id="noSellerOrders" class="empty-msg">سفارشی وجود ندارد.</p>
+      </section>
+    </div>
+  </main>
+
+  <div id="successToast" class="toast" hidden></div>
+
+  <script src="../data.js"></script>
+
+  <script src="dashboard.js"></script>
+  <script src="../animations.js"></script>
+</body>
+</html>
+
+
+
+

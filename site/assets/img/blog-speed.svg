@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img">
+<defs>
+  <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fb7185"/><stop offset="0.55" stop-color="#f43f5e"/><stop offset="1" stop-color="#9f1239"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#d97706"/></linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdf0f4"/><stop offset="1" stop-color="#c99aa8"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7f1d3a"/><stop offset="1" stop-color="#1c0a12"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d0e1e"/><stop offset="1" stop-color="#1c0a12"/></linearGradient>
+  <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.3"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.5" r="0.6"><stop offset="0" stop-color="#f43f5e" stop-opacity="0.5"/><stop offset="1" stop-color="#f43f5e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="720" height="420" fill="#1c0a12"/>
+<ellipse cx="360" cy="210" rx="330" ry="230" fill="url(#glow)"/>
+<g opacity="0.08" stroke="#fda4af"><line x1="-420" y1="420" x2="0" y2="0"/><line x1="-360" y1="420" x2="60" y2="0"/><line x1="-300" y1="420" x2="120" y2="0"/><line x1="-240" y1="420" x2="180" y2="0"/><line x1="-180" y1="420" x2="240" y2="0"/><line x1="-120" y1="420" x2="300" y2="0"/><line x1="-60" y1="420" x2="360" y2="0"/><line x1="0" y1="420" x2="420" y2="0"/><line x1="60" y1="420" x2="480" y2="0"/><line x1="120" y1="420" x2="540" y2="0"/><line x1="180" y1="420" x2="600" y2="0"/><line x1="240" y1="420" x2="660" y2="0"/><line x1="300" y1="420" x2="720" y2="0"/><line x1="360" y1="420" x2="780" y2="0"/><line x1="420" y1="420" x2="840" y2="0"/><line x1="480" y1="420" x2="900" y2="0"/><line x1="540" y1="420" x2="960" y2="0"/><line x1="600" y1="420" x2="1020" y2="0"/></g>
+
+  <path d="M148 292a164 164 0 0 1 328 0" fill="none" stroke="#7f1d3a" stroke-width="26" stroke-linecap="round" opacity="0.6"/>
+  <path d="M148 292a164 164 0 0 1 214-155" fill="none" stroke="url(#rose)" stroke-width="26" stroke-linecap="round"/>
+  <path d="M148 292a164 164 0 0 1 96-141" fill="none" stroke="url(#gold)" stroke-width="26" stroke-linecap="round"/>
+  <circle cx="312" cy="292" r="16" fill="#fdf0f4"/>
+  <path d="M312 292l86-104" stroke="#fdf0f4" stroke-width="12" stroke-linecap="round"/>
+  <path d="M212 236l-30-30M400 150l10-42M300 130l-6-44" stroke="#fda4af" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+</svg>

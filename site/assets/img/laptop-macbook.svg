@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+
+<defs>
+  <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fb7185"/><stop offset="0.55" stop-color="#f43f5e"/><stop offset="1" stop-color="#9f1239"/>
+  </linearGradient>
+  <linearGradient id="roseSoft" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fecdd3"/><stop offset="1" stop-color="#fb7185"/>
+  </linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#d97706"/>
+  </linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fdf0f4"/><stop offset="1" stop-color="#c99aa8"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3d0e1e"/><stop offset="1" stop-color="#1c0a12"/>
+  </linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7f1d3a"/><stop offset="1" stop-color="#1c0a12"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.45" r="0.6">
+    <stop offset="0" stop-color="#f43f5e" stop-opacity="0.45"/><stop offset="1" stop-color="#f43f5e" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.05"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs>
+  <rect width="480" height="360" rx="26" fill="#1c0a12"/>
+  <ellipse cx="240" cy="165.6" rx="190" ry="130" fill="url(#glow)"/>
+  <g opacity="0.07" stroke="#fda4af" stroke-width="1">
+    <line x1="-360" y1="360" x2="0" y2="0"/><line x1="-314" y1="360" x2="46" y2="0"/><line x1="-268" y1="360" x2="92" y2="0"/><line x1="-222" y1="360" x2="138" y2="0"/><line x1="-176" y1="360" x2="184" y2="0"/><line x1="-130" y1="360" x2="230" y2="0"/><line x1="-84" y1="360" x2="276" y2="0"/><line x1="-38" y1="360" x2="322" y2="0"/><line x1="8" y1="360" x2="368" y2="0"/><line x1="54" y1="360" x2="414" y2="0"/><line x1="100" y1="360" x2="460" y2="0"/><line x1="146" y1="360" x2="506" y2="0"/><line x1="192" y1="360" x2="552" y2="0"/><line x1="238" y1="360" x2="598" y2="0"/>
+  </g>
+
+  <ellipse cx="240" cy="318" rx="150" ry="16" fill="#000" opacity="0.4" filter="url(#soft)"/>
+  <rect x="108" y="62" width="264" height="176" rx="14" fill="url(#steel)"/>
+  <rect x="118" y="72" width="244" height="156" rx="9" fill="url(#screen)"/>
+  <rect x="118" y="72" width="244" height="156" rx="9" fill="url(#shine)"/>
+  <rect x="136" y="92" width="90" height="66" rx="10" fill="url(#gold)" opacity="0.85"/>
+  <rect x="238" y="92" width="106" height="10" rx="5" fill="#fda4af" opacity="0.5"/>
+  <rect x="238" y="112" width="80" height="10" rx="5" fill="#fda4af" opacity="0.35"/>
+  <rect x="136" y="172" width="208" height="12" rx="6" fill="#7f1d3a" opacity="0.6"/>
+  <rect x="136" y="192" width="150" height="12" rx="6" fill="#7f1d3a" opacity="0.4"/>
+  <circle cx="240" cy="83" r="3.5" fill="#fda4af" opacity="0.8"/>
+  <path d="M84 238h312l22 34a8 8 0 0 1-7 12H69a8 8 0 0 1-7-12z" fill="url(#steel)"/>
+  <path d="M84 238h312l22 34a8 8 0 0 1-7 12H69a8 8 0 0 1-7-12z" fill="url(#shine)"/>
+  <rect x="196" y="252" width="88" height="8" rx="4" fill="#8a5c69" opacity="0.6"/>
+  <rect x="150" y="284" width="180" height="6" rx="3" fill="url(#rose)" opacity="0.7"/>
+</svg>
